@@ -1,0 +1,11 @@
+color normal white black
+
+color hdrdefault black blue
+color attachment  black    green
+color tilde        white    black
+
+color body black black *
+color index yellow black ~p              # 发给我的，黄色
+color index blue default ~P                # 我发的，蓝色
+color index brightyellow black ~N        # 新的，黄色粗体
+color index brightgreen default "~N ~p"    # 新发给我的，绿色粗体

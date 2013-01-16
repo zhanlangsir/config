@@ -1,0 +1,12 @@
+bind pager \Cd half-down
+bind pager \Cu half-up
+bind pager gg top
+bind pager G bottom
+bind pager \Cj next-undeleted
+bind pager \Ck previous-undeleted
+bind pager j next-line
+bind pager k previous-line
+
+bind index G last-entry
+bind index gg first-entry
+bind index \Cf imap-fetch-mail

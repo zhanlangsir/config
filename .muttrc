@@ -1,0 +1,38 @@
+set mbox_type   = Maildir
+set folder      = ~/Mail/Gmail
+
+# mailboxes
+mailboxes +INBOX +drafts +spam +trash
+
+set spoolfile   = "+INBOX"
+set record = "+INBOX"
+set mbox        = "+INBOX"
+set postponed   = "+drafts"
+
+set editor="vim"
+set include=yes
+set indent_str="> "
+
+set from='zhanlang <zhanlangsir@gmail.com>'
+set realname='zhanlang'
+
+set use_from=yes
+set envelope_from=yes
+set reverse_name=yes
+set reverse_realname=yes
+set header=yes
+set pager_stop
+set sort=threads
+set sort_aux=last-date-received
+set beep_new=yes
+set timeout=15
+set mail_check=20
+
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+
+set sendmail = /usr/bin/msmtp
+
+source ~/.mutt/color-scheme
+source ~/.mutt/keymaps

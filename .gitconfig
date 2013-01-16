@@ -1,0 +1,5 @@
+[user]
+	name = zhanlang
+	email = zhanlangsir@gmail.com
+[diff]
+	tool = vimdiff
