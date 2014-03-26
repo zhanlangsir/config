@@ -1,32 +1,36 @@
 set number
-set columns=180
-set lines=60
+"set columns=168
+"set lines=39
 set expandtab	
 set tabstop=4
 set shiftwidth=4
 set go-=m
 set go-=T
 set cino=g0
-colo molokai
+set t_Co=256
+set hls
 
+set nobackup
+set nowritebackup
+colo molokai 
 set fileencodings=utf-8,gb2312,gbk,gb18030
 set termencoding=utf-8
 
-"set guifont=Consolas
-set guifont=Source\ Code\ Pro\ 10
+set guifont=Consolas\ 11
+"set guifont=Source\ Code\ Pro\ 10
 
 set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
+"source $VIMRUNTIME/vimrc_example.vim
 
 map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q<CR>
 map <F4> :A<CR>
-map <F5> :make<CR>
+map <F5> :make -j4<CR>
+map <C-s> :w<CR>
 
 set completeopt=menu,longest
 
-call pathogen#infect()
+"call pathogen#infect()
 syntax on
-filetype plugin indent on
 
 let g:LookupFile_TagExpr='".filenametags"' 
 nmap <F8> :TagbarToggle<CR>
@@ -47,20 +51,15 @@ endif
 "mutt 
 au BufRead /tmp/mutt-* set tw=72
 
-
-
 "clang_complete
 let g:clang_use_library=1
 let g:clang_complete_copen=1
-map <F5> :call g:ClangUpdateQuickFix()<CR>
-
+map <F6> :call g:ClangUpdateQuickFix()<CR>
 
 "WinManager
 let g:winManagerWindowLayout="NERDTree|TagList,BufExplorer"
 let g:winManagerWidth=30
 nmap <silent><Leader>wm :WMToggle<CR>
-
-
 
 "NERDTREE
 let NERDTreeIgnore=['\.o$', '\~$']
@@ -79,3 +78,58 @@ nmap <silent> <leader>lk :LUTags<cr>
 nmap <silent> <leader>ll :LUBufs<cr>
 "映射LUWalk为,lw
 nmap <silent> <leader>lw :LUWalk<cr>
+
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+Bundle 'ctrlp.vim'
+Bundle 'a.vim'
+Bundle 'Tagbar'
+Bundle 'Mark'
+Bundle 'genutils'
+Bundle 'cscope_macros.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'scrooloose/syntastic'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+" non github repos
+"Bundle 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (ie. when working on your own plugin)
+"Bundle 'file:///Users/gmarik/path/to/plugin'
+" ...
+
+filetype plugin indent on     " required!
+
+let g:ctrlp_custom_ignore = {
+            \ 'file': '\v\.(so|o)$',
+            \ }
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:ycm_global_ycm_extra_conf='~/.vim/myconf/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf=1
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
